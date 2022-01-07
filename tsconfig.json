@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "strict": true,
+    "importHelpers": true,
+    "baseUrl": ".",
+    "isolatedModules": false,
+    "noImplicitReturns": true,
+    "strictNullChecks": false,
+    "removeComments": true,
+    "suppressImplicitAnyIndexErrors": false,
+    "strictFunctionTypes": false,
+    "alwaysStrict": false,
+    "allowSyntheticDefaultImports":true,
+    "types": [
+      "node"    ],
+    "paths": {
+      "@/*": [
+        "src/scripts/app/*"
+      ]
+    },
+  },
+  "include": [
+    "./src/scripts/app/*.ts",
+    "./src/scripts/app/shims-vue.d.ts",
+  ],
+  "compileOnSave": false,
+  "exclude": [
+    "./node_modules"
+  ] 
+}
