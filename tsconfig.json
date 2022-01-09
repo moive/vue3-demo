@@ -22,7 +22,9 @@
     "alwaysStrict": false,
     "allowSyntheticDefaultImports":true,
     "types": [
-      "node"    ],
+      "node",
+      "webpack-env"
+    ],
     "paths": {
       "@/*": [
         "src/scripts/app/*"

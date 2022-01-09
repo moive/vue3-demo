@@ -1,10 +1,12 @@
 <template>
 	<div>hello</div>
-    <!-- <test/> -->
+    <test/>
 </template>
 
 <script lang="ts">
-	export default {
-		name: 'app',
-	}
+import { defineComponent } from "vue"
+
+	export default defineComponent( {
+		name: 'App',
+	})
 </script>

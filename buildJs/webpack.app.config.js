@@ -38,6 +38,8 @@ const config = {
 		new VueLoaderPlugin(),
 		new webpack.DefinePlugin({
 			ENV: JSON.stringify(Env),
+			__VUE_OPTIONS_API__: true, // If you are using the options api.
+			__VUE_PROD_DEVTOOLS__: false, // If you don't want people sneaking around your components in production.
 		}),
 		new HtmlWebpackPlugin({
 			chunks:['app'],

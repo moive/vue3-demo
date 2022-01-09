@@ -1,8 +1,8 @@
-import { createApp } from 'vue';
+import { Component, createApp } from 'vue';
 import App from './components/app.vue';
 // import Vue from "vue";
 // import VueRouter from "vue-router";
-// import Components from "./components";
+import Components from "./components";
 // import routes from "./router/";
 
 // Vue.use(BootstrapVue);
@@ -17,7 +17,14 @@ import App from './components/app.vue';
 // 	el: "#app"
 // });
 
-createApp(App)
-	// .use(store)
-	// .use(router)
-	.mount('#app');
+const app = createApp(App)
+// .use(store)
+// .use(router)
+// .mount('#app');
+
+for (const [key, value] of Object.entries(Components)) {
+	app.component(key, value)
+}
+
+app.mount('#app');
+console.log(app)
