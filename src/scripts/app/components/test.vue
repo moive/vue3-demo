@@ -27,24 +27,30 @@
 </template>
 
 <script lang="ts">
+import { onMounted, ref } from 'vue'
 	export default {
 		name: 'test',
 		props: {
 			msg: String,
 		},
-		data: ()=>({
-			textTop:'',
-		}),
-		mounted(){
-			console.log(this.$refs.cardBody.fullname)
-		},
-		methods:{
-			helloUser(){
-				alert(this.$refs.cardBody.fullname);
-			},
-			eventReceive(val){
-				this.textTop = val;
+		setup(){
+			const textTop = ref('');
+
+			const eventReceive = (val: string)=>{
+				textTop.value = val;
+			};
+
+			const cardBody = ref(null);
+
+			const helloUser = ()=>{
+				alert(cardBody.value.fullname);
 			}
+
+			onMounted(()=>{
+				console.log(cardBody.value.fullname)
+			});
+
+			return { textTop, eventReceive, helloUser, cardBody }
 		}
 	}
 </script>

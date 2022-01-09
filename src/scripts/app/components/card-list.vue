@@ -30,10 +30,12 @@
     </div>
 </template>
 <script>
+    import { ref } from 'vue'
     export default {
         name:'card-list',
-        data:()=>({
-            skills:[],
-        })
+        setup(){
+            const skills = ref([]);
+            return { skills }
+        }
     }
 </script>

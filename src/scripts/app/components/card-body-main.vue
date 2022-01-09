@@ -7,26 +7,27 @@
     </div>
 </template>
 <script>
+import { computed, onMounted, ref, watch } from 'vue';
     export default {
         name:"card-body-main",
-        data:()=>({
-            message:'welcome...!',
-            name: 'Moises',
-			lastname: 'Velasquez',
-            textTop:'Vue 2',
-        }),
-        mounted(){
-            this.$emit("valDescription", this.textTop);
+        setup(props, {emit}){
+            const message = ref('welcome...!');
+            const name = ref('Moises');
+			const lastname = ref('Velasquez');
+            const textTop = ref('Vue 3');
+
+            const fullname = computed(()=> `${name.value} ${lastname.value}`);
+
+            const emitValDescription = onMounted(()=>{
+                emit("valDescription", textTop.value)
+            });
+
+            watch((textTop),(val)=>{
+                emit('valDescription', val)
+            });
+
+            return { message, fullname, textTop, emitValDescription}
         },
-        watch:{
-            textTop(val){
-                this.$emit("valDescription", val);
-            }
-        },
-        computed:{
-			fullname(){
-				return  `${this.name} ${this.lastname}`;
-			}
-		},
+        
     }
 </script>

@@ -16,20 +16,23 @@
     </div>
 </template>
 <script>
+    import { onMounted, ref } from 'vue'
     export default {
         name:'users',
-        data:()=>({
-            users:[]
-        }),
-        mounted() {
-            this.load();
-        },
-        methods:{
-            async load(){
+        setup(){
+            let users = ref([]);
+
+            const load = async ()=>{
                 const data = await fetch('https://jsonplaceholder.typicode.com/users');
-                this.users = await data.json();
-                // console.log(this.users)
-            }
+                users.value = await data.json();
+                // console.log(users)
+            };
+
+            onMounted(()=>{
+                load();
+            });
+
+            return { users }
         }
     }
 </script>

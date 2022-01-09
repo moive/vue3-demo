@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "jsx": "preserve",
     "experimentalDecorators": true,
     "strict": true,
     "importHelpers": true,

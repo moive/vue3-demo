@@ -1,4 +1,4 @@
-import { Component, createApp } from 'vue';
+import { createApp } from 'vue';
 import App from './components/app.vue';
 // import Vue from "vue";
 // import VueRouter from "vue-router";
@@ -27,4 +27,3 @@ for (const [key, value] of Object.entries(Components)) {
 }
 
 app.mount('#app');
-console.log(app)

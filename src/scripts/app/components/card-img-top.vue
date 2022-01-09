@@ -21,12 +21,27 @@
             dy=".3em"
             dominant-baseline="middle"
             text-anchor="middle"
-        >{{value}}</text>
+        >{{modelValue}}</text>
     </svg>
+    <!-- <input type="text" v-model="modelValue" > -->
 </template>
 <script>
+    import {ref} from 'vue';
     export default {
         name:'card-img-top',
-        props:['value']
+        emits: ['update:modelValue'],
+        props:{
+            modelValue: String
+        },
+        setup(){
+            const test=ref('');
+            return {test}
+        },
+        watch: {
+            modelValue(v){
+                // console.log(v)
+                this.$emit('update:modelValue', v);
+            }
+        }
     }
 </script>
