@@ -1,38 +1,30 @@
 <template>
-    <div>
-        <h4>Users</h4>
-        <ol class="list-group list-group-numbered" v-if="!!users">
-            <li
-                class="list-group-item d-flex justify-content-between align-items-start"
-                v-for="user in users"
-                :key="user.id"
-            >
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">{{user.name}}</div>
-                    <a :href="'mailto:'+user.email">{{user.email}}</a>
-                </div>
-            </li>
-        </ol>
-    </div>
+    <h4>Users</h4>
+    <ol class="list-group list-group-numbered" v-if="!!users">
+        <users-list :users="users" />
+    </ol>
 </template>
-<script>
-    import { onMounted, ref } from 'vue'
-    export default {
-        name:'users',
-        setup(){
-            let users = ref([]);
 
-            const load = async ()=>{
-                const data = await fetch('https://jsonplaceholder.typicode.com/users');
-                users.value = await data.json();
-                // console.log(users)
-            };
+<script lang="ts">
+import { onMounted, ref, defineComponent } from 'vue';
+import IUser from '@/types/user';
 
-            onMounted(()=>{
-                load();
-            });
+export default defineComponent({
+    name:'users',
+    setup(){
+        let users = ref<IUser[]>([]);
 
-            return { users }
-        }
+        const load = async ()=>{
+            const data = await fetch('https://jsonplaceholder.typicode.com/users');
+            users.value = await data.json();
+            // console.log(users)
+        };
+
+        onMounted(()=>{
+            load();
+        });
+
+        return { users }
     }
+})
 </script>
